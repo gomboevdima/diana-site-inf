@@ -11,29 +11,15 @@ body {
     background: linear-gradient(145deg, #ffdde1, #ee9ca7);
     color: #2e2e2e;
     line-height: 1.6;
+    font-size: 22px;
+    overflow-x: hidden;
 }
 
-/* Иконка меню */
-.menu-icon {
-    font-size: 30px;
-    position: fixed;
-    top: 20px;
-    left: 20px;
-    z-index: 1001;
-    cursor: pointer;
-    color: #e60073;
-    background: white;
-    padding: 8px 12px;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-}
-
-/* Иконка закрытия */
+.menu-icon,
 .close-icon {
     font-size: 30px;
     position: fixed;
     top: 20px;
-    right: 20px;
     z-index: 1001;
     cursor: pointer;
     color: #e60073;
@@ -41,18 +27,25 @@ body {
     padding: 8px 12px;
     border-radius: 8px;
     box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.menu-icon {
+    left: 20px;
+}
+
+.close-icon {
+    right: 20px;
     display: none;
 }
 
-/* Показывать/прятать иконки */
 .side-menu.open ~ #menuIcon {
     display: none;
 }
+
 .side-menu.open ~ #closeIcon {
     display: block;
 }
 
-/* Меню */
 .side-menu {
     position: fixed;
     top: 0;
@@ -65,26 +58,30 @@ body {
     transition: left 0.3s ease;
     z-index: 1000;
 }
+
 .side-menu.open {
     left: 0;
 }
+
 .side-menu ul {
     list-style: none;
 }
+
 .side-menu li {
     margin-bottom: 20px;
 }
+
 .side-menu a {
     font-size: 18px;
     color: #e60073;
     text-decoration: none;
     transition: color 0.2s;
 }
+
 .side-menu a:hover {
     color: #b30059;
 }
 
-/* Затемнение */
 .overlay {
     position: fixed;
     top: 0;
@@ -97,12 +94,12 @@ body {
     transition: opacity 0.3s;
     z-index: 999;
 }
+
 .overlay.show {
     opacity: 1;
     visibility: visible;
 }
 
-/* Хедер */
 header {
     text-align: center;
     padding: 80px 20px 50px;
@@ -110,12 +107,14 @@ header {
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
     clip-path: ellipse(100% 100% at 50% 0%);
 }
+
 header h1 {
     font-size: 48px;
     color: #e60073;
     letter-spacing: 1px;
     text-shadow: 0 0 5px rgba(255, 0, 128, 0.3);
 }
+
 .welcome-text {
     margin-top: 15px;
     font-size: 20px;
@@ -126,77 +125,66 @@ header h1 {
     color: #4b4b4b;
 }
 
-/* Контент */
 main {
-    max-width: 900px;
+    max-width: 1000px;
     margin: 60px auto;
-    padding: 0 30px;
+    padding: 0 20px;
     animation: fadeIn 1s ease-in-out;
 }
+
 .about h2 {
-    font-size: 32px;
+    font-size: 36px;
     color: #b30059;
     margin-bottom: 25px;
-}
-.about p, .about li {
-    font-size: 20px;
-    margin-bottom: 10px;
-}
-.about ul {
-    margin-top: 10px;
-    padding-left: 25px;
-    list-style: square;
-}
-.more-link {
-    display: inline-block;
-    margin-top: 20px;
-    font-size: 18px;
-    color: #e60073;
-    text-decoration: none;
-    transition: color 0.3s;
-}
-.more-link:hover {
-    color: #b30059;
-    text-decoration: underline;
-}
-
-/* Футер */
-footer {
-    text-align: center;
-    padding: 30px;
-    background: #fff;
-    color: #888;
-    font-size: 14px;
-    border-top: 2px solid #ffd6e5;
-    margin-top: 60px;
+    font-weight: 600;
 }
 
 .about-content {
     display: flex;
-    align-items: center;
-    gap: 40px; /* расстояние между фото и текстом */
-    flex-wrap: wrap; /* чтобы на телефоне встало друг под друга */
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 30px;
+    flex-wrap: wrap;
+    justify-content: center;
     margin-top: 20px;
 }
 
-/* Фото сбоку, как и раньше */
 .profile-photo {
-    max-width: 280px;
+    max-width: 100%;
+    width: 280px;
     border-radius: 12px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
     height: auto;
 }
 
-/* Текст рядом с фото */
-.about-text p {
-    font-size: 20px;
-    margin-bottom: 10px;
+.inline-photo {
+    max-width: 100%;
+    margin-top: 20px;
+    border-radius: 10px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
 }
 
+.about-text {
+    flex: 1;
+    min-width: 260px;
+}
 
+.about-text p {
+    font-size: 22px;
+    margin-bottom: 14px;
+    line-height: 1.6;
+}
 
+footer {
+    text-align: center;
+    padding: 30px;
+    background: #fff;
+    color: #888;
+    font-size: 16px;
+    border-top: 2px solid #ffd6e5;
+    margin-top: 60px;
+}
 
-/* Анимация */
 @keyframes fadeIn {
     from {
         opacity: 0;
@@ -205,5 +193,43 @@ footer {
     to {
         opacity: 1;
         transform: translateY(0);
+    }
+}
+
+@media (max-width: 768px) {
+    .about-content {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .about-text {
+        padding: 0 10px;
+    }
+
+    .about-text p {
+        font-size: 22px;
+    }
+
+    .profile-photo {
+        width: 85%;
+        max-width: 320px;
+    }
+
+    header h1 {
+        font-size: 36px;
+    }
+
+    .welcome-text {
+        font-size: 18px;
+    }
+
+    .menu-icon,
+    .close-icon {
+        font-size: 26px;
+    }
+
+    footer {
+        font-size: 14px;
     }
 }
